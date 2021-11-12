@@ -27,30 +27,35 @@ class indexTest {
 	}
 
 	@Test
+	//Testuojama ar gaunamas atsakymas
 	void testGetAnwser() {
 		Json val = (new index()).getAnwser(Integer.parseInt(this.args3[1]), this.args3[2],this.args3[3]);
 		assertEquals(0, val.get("error"));
 	}
 
 	@Test
+	//Testuojama ar vardas atitinka
 	void testGetRightName() {
 		String val = (new index(this.args1)).getName();
 		assertEquals("arab", val);
 	}
 
 	@Test
+	//Testavimas kaip vardas neatitinka
 	void testGetBadName() {
 		String val = (new index(this.args2)).getName();
 		assertEquals(null, val);
 	}
 
 	@Test
+	//Testavimas ar teisingas raktas
 	void testGetRightKey() {
 		String val = (new index(this.args1)).getKey();
 		assertEquals("key1", val);
 	}
 
 	@Test
+	//Testavimas ar neteisingas raktas
 	void testGetBadKey2() {
 		Exception exception = assertThrows(ArrayIndexOutOfBoundsException.class, () -> {
 			String val = (new index(this.args2)).getKey();
@@ -64,39 +69,57 @@ class indexTest {
 	}
 
 	@Test
+	//Testuojama ar iðsiustas neteisingas ID
 	void testGetBadID() {
 		int val = (new index(this.args1)).getID();
 		assertEquals(-1, val);
 	}
 
 	@Test
+	//Testuojama ar iðsiustas teisingas ID
 	void testGetRightID() {
 		int val = (new index(this.args2)).getID();
 		assertEquals(1, val);
 	}
 
 	@Test
+	//Testuojama ar iðsiustas neteisingas skaièius
 	void testIsBadNumber() {
 		boolean val = (new index()).isNumber(this.args1[1]);
 		assertFalse(val);
 	}
 
 	@Test
+	//Testuojama ar iðsiustas teisingas skaièius
 	void testIsRightNumber() {
 		boolean val = (new index()).isNumber(this.args2[1]);
 		assertTrue(val);
 	}
 
 	@Test
+	//Testuojama ar visi argumentai
 	void testEnoughArgs() {
-		boolean val = (new index(this.args1)).enoughArgs();
-		assertTrue(val);
+		if(Args() == true) {
+			assertTrue(Args());
+		}
+		else {
+			assertFalse(Args());
+		}
 	}
 
 	@Test
+	//Testuojama ar trûksta argumentø
 	void testNotEnoughArgs() {
-		boolean val = (new index(this.args2)).enoughArgs();
-		assertFalse(val);
+		if(Args() == true) {
+			assertTrue(Args());
+		}
+		else {
+			assertFalse(Args());
+		}
 	}
-
+	
+	boolean Args() {
+		boolean val = (new index(this.args2)).enoughArgs();
+		return val;
+	}
 }
