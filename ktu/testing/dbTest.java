@@ -36,6 +36,7 @@ class dbTest {
 	
 	@SuppressWarnings("static-access")
 	@Test
+	//Testuojama ar 5 serveris egzistuoja
 	void testServerExist() {
 		boolean val = (new db().serverExist(a));
 		assertTrue(val);
@@ -43,6 +44,7 @@ class dbTest {
 	
 	@SuppressWarnings("static-access")
 	@Test
+	//Testuojama ar 11 serveris neegzistuoja
 	void testServerNotExist() {
 		boolean val = (new db().serverExist(b));
 		assertFalse(val);
@@ -50,6 +52,7 @@ class dbTest {
 	
 	@SuppressWarnings("static-access")
 	@Test
+	//Testuojama ar ID ir raktas teisingi
 	void testIDAndKeyCorrect() {
 		boolean val = (new db().keyCorrect(a,key1));
 		assertTrue(val);
@@ -57,18 +60,19 @@ class dbTest {
 	
 	@SuppressWarnings("static-access")
 	@Test
+	//Kai raktas neatitinka ID raktui
 	void testIDAndKeyNotCorrect1() {
 		boolean val = (new db().keyCorrect(a,key2));
 		assertFalse(val);
 	}
-	
+	//Kai raktas neatitinka ID raktui
 	@SuppressWarnings("static-access")
 	@Test
 	void testIDAndKeyNotCorrect2() {
 		boolean val = (new db().keyCorrect(b,key1));
 		assertFalse(val);
 	}
-	
+	//Kai raktas neatitinka ID raktui
 	@SuppressWarnings("static-access")
 	@Test
 	void testIDAndKeyNotCorrect3() {
@@ -77,6 +81,7 @@ class dbTest {
 	}
 	@SuppressWarnings("static-access")
 	@Test
+	//Testuojama kai gauti teisingi balsai
 	void testGetRightVotes() {
 		int val = (new db().getVotes(a,key1));
 		boolean chek = false;
@@ -90,6 +95,7 @@ class dbTest {
 	}
 	@SuppressWarnings("static-access")
 	@Test
+	//Testuojama kai gauti neteisingi balsai
 	void testGetBadVotes() {
 		int val = (new db().getVotes(a,key1));
 		boolean chek = false;
@@ -103,6 +109,7 @@ class dbTest {
 	}
 	@SuppressWarnings("static-access")
 	@Test
+	// Teisingi balsai, bet klaidingas raktas
 	void testGetBadKeyAndRightVotes() {
 		int val = (new db().getVotes(a,key2));
 		boolean chek = false;
@@ -116,6 +123,7 @@ class dbTest {
 	}
 	@SuppressWarnings("static-access")
 	@Test
+	//Kai niekas neteisingai, nei balsai, nei raktas
 	void testGetBadKeyAndBadVotes() {
 		int val = (new db().getVotes(a,key2));
 		boolean chek = false;
@@ -130,6 +138,7 @@ class dbTest {
 	
 	@SuppressWarnings("static-access")
 	@Test
+	//Kai niekas neteisingai, nei balsai, nei raktas
 	void testGetBadKeyAndBadVotes4() {
 		int val = (new db().getVotes(b,key1));
 		boolean chek = false;
@@ -143,6 +152,7 @@ class dbTest {
 	}
 	@SuppressWarnings("static-access")
 	@Test
+	//Kai niekas neteisingai, nei balsai, nei raktas
 	void testGetBadKeyAndBadVotes1() {
 		int val = (new db().getVotes(b,key1));
 		boolean chek = false;
@@ -157,6 +167,7 @@ class dbTest {
 	
 	@SuppressWarnings("static-access")
 	@Test
+	//Kai niekas neteisingai, nei balsai, nei raktas
 	void testGetBadKeyAndBadVotes2() {
 		int val = (new db().getVotes(b,key2));
 		boolean chek = false;
@@ -171,6 +182,7 @@ class dbTest {
 	
 	@SuppressWarnings("static-access")
 	@Test
+	//Kai niekas neteisingai, nei balsai, nei raktas
 	void testGetBadKeyAndBadVotes3() {
 		int val = (new db().getVotes(b,key2));
 		boolean chek = false;
@@ -185,6 +197,7 @@ class dbTest {
 
 	@SuppressWarnings("static-access")
 	@Test
+	//Tikrinama ar ðis vartotojas nebalsavo uþ 5 serverá
 	void testDidBadVote1() {
 		boolean val = (new db().didVote(a,key1, "Name5"));
 		assertFalse(val);
@@ -192,6 +205,7 @@ class dbTest {
 	
 	@SuppressWarnings("static-access")
 	@Test
+	//Tikrinama ar ðis vartotojas nebalsavo uþ 5 serverá
 	void testDidBadVote2() {
 		boolean val = (new db().didVote(a,key1, "Name4"));
 		assertFalse(val);
@@ -199,6 +213,7 @@ class dbTest {
 	
 	@SuppressWarnings("static-access")
 	@Test
+	//Tikrinama ar ðis vartotojas nebalsavo uþ 5 serverá
 	void testDidBadVote3() {
 		boolean val = (new db().didVote(a,key1, "Name2"));
 		assertFalse(val);
@@ -206,12 +221,14 @@ class dbTest {
 	
 	@SuppressWarnings("static-access")
 	@Test
+	//Tikrinama ar ðis vartotojas nebalsavo uþ 5 serverá
 	void testDidBadVote4() {
 		boolean val = (new db().didVote(a,key1, "Name3"));
 		assertFalse(val);
 	}
 	@SuppressWarnings("static-access")
 	@Test
+	//Tikrinama ar ðis vartotojas balsavo uþ 1 serverá
 	void testDidCorrectVote() {
 		boolean val = (new db().didVote(1,"key1", "Name3"));
 		assertTrue(val);
@@ -219,9 +236,9 @@ class dbTest {
 	
 	@SuppressWarnings("static-access")
 	@Test
+	//Tikrinama ar egzistuoja þaidimo serveriai
 	void testGetServers() {
 		List<List<String>> val = (new db().getServers());
 		assertNotNull(val);
 	}
-
 }
